@@ -14,7 +14,7 @@ const CATEGORIES: { value: ProductCategory | 'all'; label: string }[] = [
   { value: 'vestidos', label: 'VESTIDOS'  },
   { value: 'gym',      label: 'GYM & ACTIVEWEAR' },
   { value: 'new',      label: 'NOVEDADES' },
-  { value: 'clientes', label: 'CÁPSULA'   },
+
 ];
 
 const SORT_OPTIONS = [

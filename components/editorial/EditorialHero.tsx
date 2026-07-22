@@ -27,7 +27,7 @@ export function EditorialHero() {
 
           {/* Season Tag */}
           <div className="inline-block px-3.5 py-1 bg-black/50 backdrop-blur-xs border border-white/20 text-white text-[10px] uppercase tracking-[0.25em] font-semibold">
-            TEMPORADA 2026 • LA CÁPSULA
+            TEMPORADA 2026 • LA REGALERÍA
           </div>
 
           {/* Centered Giant Serif Headline */}

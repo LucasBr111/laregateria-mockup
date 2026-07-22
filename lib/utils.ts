@@ -154,7 +154,7 @@ export function buildWhatsAppMessage(
     (i) => `• ${i.name} (${i.size} / ${i.color}) x${i.qty} — Gs. ${i.price.toLocaleString('es-PY')}`
   );
   return [
-    '🛍️ *Pedido La Regatería*',
+    '🛍️ *Pedido La regalería*',
     '',
     ...lines,
     '',

@@ -39,7 +39,7 @@ const BENTO_CATEGORIES: BentoItem[] = [
   },
   {
     id: 'clientes',
-    title: 'Colección Cápsula',
+    title: 'Colección',
     subtitle: 'Looks curados.',
     href: '/catalog?cat=clientes',
     image: '/img/collection.png',

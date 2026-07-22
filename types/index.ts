@@ -57,8 +57,8 @@ export const SHIPPING_COSTS: Record<ShippingZone, number> = {
 };
 
 export const SHIPPING_LABELS: Record<ShippingZone, string> = {
-  'asuncion':       'Asunción (1-2 días)',
-  'gran-asuncion':  'Gran Asunción (2-3 días)',
+  'asuncion':       'cde (1-2 días)',
+  'gran-asuncion':  'Gran cde (2-3 días)',
   'interior':       'Interior del país (3-5 días)',
   'retiro':         'Retiro en local (gratis)',
 };

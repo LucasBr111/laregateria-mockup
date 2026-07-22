@@ -12,13 +12,13 @@ export function EditorialFooter() {
           {/* Col 1 & 2: Brand Identity */}
           <div className="lg:col-span-2 space-y-4 pr-0 lg:pr-8">
             <span className="font-serif text-2xl md:text-3xl text-[var(--text-primary)] font-light tracking-[0.15em] block">
-              LA REGATERÍA
+              LA REGALERÍA
             </span>
             <p className="text-xs text-[var(--text-secondary)] font-sans font-light leading-relaxed max-w-sm">
               Plataforma de moda femenina concebida bajo principios editoriales. Confección exclusiva en Paraguay con envíos protegidos a todo el país.
             </p>
             <p className="text-[10px] uppercase tracking-[0.2em] text-[var(--text-muted)] pt-2">
-              ASUNCIÓN • PARAGUAY
+              CDE • PARAGUAY
             </p>
           </div>
 
@@ -90,12 +90,12 @@ export function EditorialFooter() {
 
         {/* Bottom Bar: Copyright & Payment icons */}
         <div className="border-t border-[var(--border-subtle)] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] uppercase tracking-[0.18em] text-[var(--text-muted)]">
-          <p>© {new Date().getFullYear()} LA REGATERÍA S.A. TODOS LOS DERECHOS RESERVADOS.</p>
+          <p>© {new Date().getFullYear()} LA REGALERÍA S.A. TODOS LOS DERECHOS RESERVADOS.</p>
           <div className="flex items-center gap-4">
             <span>BANCARD</span>
             <span>·</span>
             <span>PAGOPAR</span>
-            <span>·</span>
+            <span>·</span>  
             <span>TRANSFERENCIA</span>
           </div>
         </div>

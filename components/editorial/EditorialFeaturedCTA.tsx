@@ -14,8 +14,8 @@ export function EditorialFeaturedCTA() {
             {/* Left: Editorial Photo */}
             <div className="relative aspect-[4/3] lg:aspect-[3/4] w-full overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1000&q=85"
-                alt="Edición Limitada La Regatería"
+                src="/img/collection2.png"
+                alt="Edición Limitada La regalería"
                 fill
                 className="object-cover"
                 unoptimized
@@ -28,7 +28,7 @@ export function EditorialFeaturedCTA() {
               <div className="space-y-2">
                 <p className="editorial-label">CURADURÍA EXCLUSIVA</p>
                 <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-[var(--text-primary)] leading-tight">
-                  Edición Limitada — Primavera / Verano
+                  Edición Limitada — Invierno / Otoño
                 </h2>
               </div>
 

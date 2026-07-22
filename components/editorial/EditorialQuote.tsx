@@ -19,7 +19,7 @@ export function EditorialQuote() {
 
         {/* Short Text */}
         <p className="text-sm md:text-base text-[var(--text-secondary)] font-sans font-light max-w-xl mx-auto leading-relaxed">
-          Cada patrón es concebido en nuestro atelier en Asunción con un estándar de exigencia artesanal.
+          Cada patrón es concebido en nuestro atelier en cde con un estándar de exigencia artesanal.
         </p>
 
         {/* CTA Link */}

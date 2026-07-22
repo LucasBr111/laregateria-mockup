@@ -81,7 +81,7 @@ export const useCartStore = create<CartStore>()(
 
       total: () => get().subtotal() + get().shippingCost(),
     }),
-    { name: 'la-regateria-cart' }
+    { name: 'la-regaleria-cart' }
   )
 );
 
@@ -146,7 +146,7 @@ export const useUIStore = create<UIStore>()(
       },
     }),
     {
-      name: 'la-regateria-ui',
+      name: 'la-regaleria-ui',
       partialize: (state) => ({ theme: state.theme }),
     }
   )
@@ -176,6 +176,6 @@ export const useNotifyStore = create<NotifyStore>()(
       hasNotify: (variantId) =>
         get().notifyList.some((n) => n.variantId === variantId),
     }),
-    { name: 'la-regateria-notify' }
+    { name: 'la-regaleria-notify' }
   )
 );

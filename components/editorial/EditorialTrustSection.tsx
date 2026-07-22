@@ -20,7 +20,7 @@ const TRUST_PILLARS: TrustPillar[] = [
   },
   {
     title: 'Envío Protegido',
-    subtitle: 'Asunción y cobertura a todo el país.',
+    subtitle: 'cde y cobertura a todo el país.',
     iconSvg: (
       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="square">
         <rect x="1" y="3" width="15" height="13" />

@@ -13,7 +13,7 @@ export function EditorialBrandHeritage() {
           <div className="relative aspect-[3/4] w-full border border-[var(--border-subtle)] overflow-hidden">
             <Image
               src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=900&q=85"
-              alt="Atelier La Regatería"
+              alt="Atelier La regalería"
               fill
               className="object-cover"
               unoptimized
@@ -32,7 +32,7 @@ export function EditorialBrandHeritage() {
             </div>
 
             <p className="text-sm md:text-base text-[var(--text-secondary)] font-sans font-light leading-relaxed">
-              La Regatería nace como una respuesta a la producción masiva indiferenciada. Diseñamos cápsulas limitadas trabajando con sastres y confeccionistas locales en Paraguay, cuidando la tensión de cada costura y la fluidez natural de cada caída.
+              La regalería nace como una respuesta a la producción masiva indiferenciada. Diseñamos colecciones limitadas trabajando con sastres y confeccionistas locales en Paraguay, cuidando la tensión de cada costura y la fluidez natural de cada caída.
             </p>
 
             {/* Editorial Metrics */}

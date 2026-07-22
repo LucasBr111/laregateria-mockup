@@ -30,7 +30,7 @@ export function EditorialNewsletter() {
         </h2>
 
         <p className="text-xs md:text-sm text-[var(--text-secondary)] font-sans font-light leading-relaxed max-w-md mx-auto">
-          Recibe invitaciones anticipadas a nuestros Drops, acceso a colecciones cápsula y ventas privadas.
+          Recibe invitaciones anticipadas a nuestros Drops, acceso a colecciones y ventas privadas.
         </p>
 
         {!sent ? (

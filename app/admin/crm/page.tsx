@@ -84,7 +84,7 @@ export default function CrmAdminPage() {
                 </div>
 
                 <a
-                  href={`https://wa.me/${selectedCustomer.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hola ${selectedCustomer.name}! Te escribimos de La Regatería ✨`)}`}
+                  href={`https://wa.me/${selectedCustomer.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hola ${selectedCustomer.name}! Te escribimos de La regalería ✨`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >

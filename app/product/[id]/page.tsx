@@ -302,7 +302,7 @@ export default function ProductDetailPage() {
                   </button>
                   {detailsOpen && (
                     <p className="text-xs text-[var(--text-secondary)] font-sans font-light leading-relaxed pt-3">
-                      {product.description} Confeccionado artesanalmente en nuestro taller en Asunción con patrones de alta precisión.
+                      {product.description} Confeccionado artesanalmente en nuestro taller en cde con patrones de alta precisión.
                     </p>
                   )}
                 </div>
@@ -336,7 +336,7 @@ export default function ProductDetailPage() {
                   </button>
                   {shippingOpen && (
                     <p className="text-xs text-[var(--text-secondary)] font-sans font-light leading-relaxed pt-3">
-                      Envíos express en Asunción (1-2 días). Cobertura a todo Paraguay. Cambios y devoluciones sin complicaciones dentro de los 7 días posteriores a la entrega.
+                      Envíos express en cde (1-2 días). Cobertura a todo Paraguay. Cambios y devoluciones sin complicaciones dentro de los 7 días posteriores a la entrega.
                     </p>
                   )}
                 </div>

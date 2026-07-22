@@ -3,14 +3,14 @@ import './globals.css';
 import { CartDrawer } from '@/components/shop/CartDrawer';
 
 export const metadata: Metadata = {
-  title: 'LA REGATERÍA — Alta Moda Femenina',
+  title: 'LA regalerÍA — Alta Moda Femenina',
   description:
-    'Ecosistema editorial de moda femenina premium. Colecciones exclusivas, ropa de gym sculpt y novedades. Entrega en Asunción y todo Paraguay.',
-  keywords: ['moda femenina', 'vestidos', 'ropa gym', 'Paraguay', 'Asunción', 'alta costura'],
+    'Ecosistema editorial de moda femenina premium. Colecciones exclusivas, ropa de gym sculpt y novedades. Entrega en cde y todo Paraguay.',
+  keywords: ['moda femenina', 'vestidos', 'ropa gym', 'Paraguay', 'cde', 'alta costura'],
   openGraph: {
-    title: 'LA REGATERÍA — Alta Moda Femenina',
+    title: 'LA regalerÍA — Alta Moda Femenina',
     description: 'Moda femenina premium. Vestidos, Gym Sculpt, Novedades.',
-    siteName: 'La Regatería',
+    siteName: 'La regalería',
     type: 'website',
   },
 };

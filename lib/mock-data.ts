@@ -304,10 +304,10 @@ export const PRODUCTS: Product[] = [
   // ── CLIENTES / LOOKS ──
   {
     id: 'c001',
-    name: 'Look "Noche de Asunción"',
+    name: 'Look "Noche de cde"',
     slug: 'look-noche-de-asuncion',
     description:
-      'El look favorito de nuestras clientas para salidas nocturnas. Incluye vestido midi satén + accesorios. Curado por el equipo de La Regatería.',
+      'El look favorito de nuestras clientas para salidas nocturnas. Incluye vestido midi satén + accesorios. Curado por el equipo de La regalería.',
     price: 520000,
     category: 'clientes',
     images: [IMG.social1, IMG.social2],
@@ -333,7 +333,7 @@ export const PRODUCTS: Product[] = [
     name: 'Look "Día de Verano"',
     slug: 'look-dia-de-verano',
     description:
-      'Curado para el calor de Asunción. Vestido floral + sandalias planas. Fresco, cómodo y de moda. Ideal para el shopping o un almuerzo al aire libre.',
+      'Curado para el calor de cde. Vestido floral + sandalias planas. Fresco, cómodo y de moda. Ideal para el shopping o un almuerzo al aire libre.',
     price: 310000,
     category: 'clientes',
     images: [IMG.social3, IMG.social1],
@@ -568,8 +568,8 @@ export const BANK_INFO = {
   bank:    'Banco Continental',
   account: '120-9840123-4',
   ruc:     '80061234-5',
-  alias:   'LAREGATERIA',
-  holder:  'La Regatería S.A.',
+  alias:   'LAREGALERIA',
+  holder:  'La Regalería S.A.',
 };
 
 export const WHATSAPP_NUMBER = '595981000000'; // número de demo

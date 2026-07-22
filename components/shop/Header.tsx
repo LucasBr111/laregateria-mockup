@@ -53,7 +53,7 @@ export function Header() {
             onClick={closeMenu}
             className="font-display text-2xl font-light tracking-widest text-gold-gradient select-none"
           >
-            La Regatería
+            La regalería
           </Link>
 
           {/* Desktop Nav */}
