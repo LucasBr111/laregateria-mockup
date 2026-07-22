@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { X, Plus, Minus, Trash2, ShoppingBag, ChevronRight, Truck } from 'lucide-react';
 import { useCartStore, useUIStore } from '@/lib/store';
 import { formatPrice } from '@/lib/utils';
-import { GlassButton } from '@/components/ui/GlassButton';
+import { EditorialButton } from '@/components/ui/EditorialButton';
 import { useEffect } from 'react';
 import type { ShippingZone } from '@/types';
 import { SHIPPING_LABELS, SHIPPING_COSTS } from '@/types';
@@ -33,56 +33,55 @@ export function CartDrawer() {
 
   return (
     <div className="fixed inset-0 z-50 flex justify-end">
-      {/* Backdrop */}
+      {/* Dark Backdrop */}
       <div
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm animate-fade-in"
+        className="absolute inset-0 bg-black/70 animate-fade-in"
         onClick={closeCart}
       />
 
-      {/* Drawer */}
-      <div className="relative w-full max-w-md h-full glass-drawer flex flex-col animate-slide-in-right">
+      {/* 100% OPAQUE SOLID DRAWER (Non-transparent) */}
+      <div className="relative w-full max-w-md h-full bg-[var(--bg-base)] text-[var(--text-primary)] border-l border-[var(--border-medium)] shadow-2xl flex flex-col z-10 animate-slide-in-right opacity-100">
+        
         {/* Header */}
-        <div className="flex items-center justify-between p-5 border-b border-[var(--glass-border)]">
+        <div className="flex items-center justify-between p-6 border-b border-[var(--border-subtle)] bg-[var(--bg-surface)]">
           <div className="flex items-center gap-2">
-            <ShoppingBag size={18} style={{ color: 'var(--primary)' }} />
-            <h2 className="font-display text-xl font-light text-[var(--text-cream)]">
+            <ShoppingBag size={18} className="text-[var(--accent-gold)]" />
+            <h2 className="font-serif text-xl font-light text-[var(--text-primary)] tracking-wide">
               Tu Carrito
             </h2>
             {items.length > 0 && (
-              <span className="text-xs text-[var(--text-muted)]">({items.length})</span>
+              <span className="text-xs font-mono text-[var(--text-muted)]">({items.length})</span>
             )}
           </div>
           <button
             onClick={closeCart}
-            className="w-8 h-8 flex items-center justify-center rounded-full border border-[var(--glass-border)] text-[var(--text-muted)] hover:text-[var(--primary)] hover:border-[var(--primary)] transition-all"
+            className="w-8 h-8 flex items-center justify-center border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--text-primary)] transition-all"
           >
             <X size={16} />
           </button>
         </div>
 
-        {/* Items */}
-        <div className="flex-1 overflow-y-auto py-4 px-5 space-y-3">
+        {/* Items Container */}
+        <div className="flex-1 overflow-y-auto py-4 px-6 space-y-3 bg-[var(--bg-base)]">
           {items.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full gap-4 py-16 text-center">
-              <div className="w-16 h-16 rounded-full flex items-center justify-center"
-                style={{ background: 'var(--glass-bg)', border: '1px solid var(--glass-border)' }}>
-                <ShoppingBag size={28} style={{ color: 'var(--text-dim)' }} />
+              <div className="w-16 h-16 rounded-full flex items-center justify-center bg-[var(--bg-surface)] border border-[var(--border-subtle)]">
+                <ShoppingBag size={28} className="text-[var(--text-muted)]" />
               </div>
-              <p className="text-[var(--text-muted)] font-display text-lg">Tu carrito está vacío</p>
-              <p className="text-sm text-[var(--text-dim)]">Explorá nuestras colecciones</p>
+              <p className="text-[var(--text-primary)] font-serif text-lg">Tu carrito está vacío</p>
+              <p className="text-xs text-[var(--text-muted)] font-sans">Explorá nuestras colecciones exclusivas</p>
               <Link href="/catalog" onClick={closeCart}>
-                <GlassButton variant="ghost" size="sm">Ver catálogo</GlassButton>
+                <EditorialButton variant="ghost" size="sm">Ver catálogo</EditorialButton>
               </Link>
             </div>
           ) : (
             items.map((item) => (
               <div
                 key={item.variant.id}
-                className="flex gap-3 p-3 rounded-xl transition-all"
-                style={{ background: 'var(--glass-bg)', border: '1px solid var(--glass-border)' }}
+                className="flex gap-3 p-3 bg-[var(--bg-surface)] border border-[var(--border-subtle)] transition-all"
               >
                 {/* Image */}
-                <div className="relative w-20 h-24 rounded-lg overflow-hidden shrink-0 bg-[var(--bg-surface)]">
+                <div className="relative w-20 h-24 overflow-hidden shrink-0 bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)]">
                   <Image
                     src={item.product.images[0]}
                     alt={item.product.name}
@@ -93,39 +92,41 @@ export function CartDrawer() {
                 </div>
 
                 {/* Info */}
-                <div className="flex-1 min-w-0">
-                  <h4 className="text-sm font-medium text-[var(--text-cream)] leading-snug line-clamp-2">
-                    {item.product.name}
-                  </h4>
-                  <p className="text-xs text-[var(--text-muted)] mt-0.5">
-                    {item.variant.size} / {item.variant.color}
-                  </p>
-                  <p className="text-sm font-semibold mt-1" style={{ color: 'var(--primary)' }}>
-                    {formatPrice(item.product.price * item.quantity)}
-                  </p>
+                <div className="flex-1 min-w-0 flex flex-col justify-between">
+                  <div>
+                    <h4 className="text-xs font-serif font-medium text-[var(--text-primary)] leading-snug line-clamp-2">
+                      {item.product.name}
+                    </h4>
+                    <p className="text-[10px] text-[var(--text-muted)] uppercase tracking-wider mt-0.5">
+                      {item.variant.size} / {item.variant.color}
+                    </p>
+                    <p className="text-xs font-semibold text-[var(--accent-gold)] mt-1">
+                      {formatPrice(item.product.price * item.quantity)}
+                    </p>
+                  </div>
 
-                  {/* Qty controls */}
+                  {/* Quantity Controls */}
                   <div className="flex items-center gap-2 mt-2">
                     <button
                       onClick={() => updateQty(item.variant.id, item.quantity - 1)}
-                      className="w-6 h-6 flex items-center justify-center rounded-full border border-[var(--glass-border)] text-[var(--text-muted)] hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all"
+                      className="w-6 h-6 flex items-center justify-center border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:border-[var(--text-primary)] hover:text-[var(--text-primary)] transition-all"
                     >
                       <Minus size={10} />
                     </button>
-                    <span className="text-sm w-5 text-center text-[var(--text-cream)]">{item.quantity}</span>
+                    <span className="text-xs w-5 text-center font-mono text-[var(--text-primary)]">{item.quantity}</span>
                     <button
                       onClick={() => updateQty(item.variant.id, item.quantity + 1)}
                       disabled={item.quantity >= item.variant.stock}
-                      className="w-6 h-6 flex items-center justify-center rounded-full border border-[var(--glass-border)] text-[var(--text-muted)] hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all disabled:opacity-40"
+                      className="w-6 h-6 flex items-center justify-center border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:border-[var(--text-primary)] hover:text-[var(--text-primary)] transition-all disabled:opacity-40"
                     >
                       <Plus size={10} />
                     </button>
 
                     <button
                       onClick={() => removeItem(item.variant.id)}
-                      className="ml-auto text-[var(--text-dim)] hover:text-[var(--accent-sale)] transition-colors"
+                      className="ml-auto text-[var(--text-muted)] hover:text-[var(--accent-sale)] transition-colors p-1"
                     >
-                      <Trash2 size={14} />
+                      <Trash2 size={13} />
                     </button>
                   </div>
                 </div>
@@ -136,28 +137,27 @@ export function CartDrawer() {
 
         {/* Footer */}
         {items.length > 0 && (
-          <div className="border-t border-[var(--glass-border)] p-5 space-y-4">
+          <div className="border-t border-[var(--border-subtle)] bg-[var(--bg-surface)] p-6 space-y-4">
             {/* Zona de envío */}
             <div>
-              <label className="flex items-center gap-1.5 text-xs tracking-wider uppercase text-[var(--text-muted)] mb-2">
-                <Truck size={12} />
-                Zona de envío
+              <label className="flex items-center gap-1.5 text-[10px] tracking-[0.18em] uppercase text-[var(--text-muted)] font-semibold mb-2">
+                <Truck size={12} /> Zona de envío
               </label>
-              <div className="grid grid-cols-2 gap-1.5">
+              <div className="grid grid-cols-2 gap-2">
                 {ZONES.map((z) => (
                   <button
                     key={z}
                     onClick={() => setZone(z)}
-                    className="text-left px-2.5 py-1.5 rounded-lg text-xs transition-all"
+                    className="text-left px-3 py-2 text-xs transition-all border"
                     style={{
-                      background: zone === z ? 'var(--primary-muted)' : 'var(--glass-bg)',
-                      border: `1px solid ${zone === z ? 'var(--primary)' : 'var(--glass-border)'}`,
-                      color: zone === z ? 'var(--primary)' : 'var(--text-muted)',
+                      background: zone === z ? 'var(--bg-base)' : 'var(--bg-surface-elevated)',
+                      borderColor: zone === z ? 'var(--accent-gold)' : 'var(--border-subtle)',
+                      color: zone === z ? 'var(--accent-gold)' : 'var(--text-secondary)',
                     }}
                   >
-                    {SHIPPING_LABELS[z].split(' (')[0]}
+                    <span className="font-semibold block">{SHIPPING_LABELS[z].split(' (')[0]}</span>
                     {z !== 'retiro' && (
-                      <span className="block text-[10px] opacity-60">
+                      <span className="block text-[10px] opacity-75">
                         Gs. {SHIPPING_COSTS[z].toLocaleString('es-PY')}
                       </span>
                     )}
@@ -167,30 +167,28 @@ export function CartDrawer() {
             </div>
 
             {/* Totales */}
-            <div className="space-y-1.5">
-              <div className="flex justify-between text-sm text-[var(--text-muted)]">
+            <div className="space-y-1.5 pt-2 border-t border-[var(--border-subtle)]">
+              <div className="flex justify-between text-xs text-[var(--text-secondary)]">
                 <span>Subtotal</span>
                 <span>{formatPrice(subtotal)}</span>
               </div>
               {zone && (
-                <div className="flex justify-between text-sm text-[var(--text-muted)]">
+                <div className="flex justify-between text-xs text-[var(--text-secondary)]">
                   <span>Envío</span>
                   <span>{shipping === 0 ? 'Gratis' : formatPrice(shipping)}</span>
                 </div>
               )}
-              <div className="divider-gold" />
-              <div className="flex justify-between font-semibold text-base text-[var(--text-cream)]">
+              <div className="flex justify-between font-serif text-xl font-light text-[var(--text-primary)] pt-1">
                 <span>Total</span>
-                <span style={{ color: 'var(--primary)' }}>{formatPrice(total)}</span>
+                <span className="text-[var(--accent-gold)]">{formatPrice(total)}</span>
               </div>
             </div>
 
             {/* CTA */}
-            <Link href="/checkout" onClick={closeCart}>
-              <GlassButton fullWidth size="lg">
-                Ir al checkout
-                <ChevronRight size={16} />
-              </GlassButton>
+            <Link href="/checkout" onClick={closeCart} className="block pt-1">
+              <EditorialButton fullWidth size="lg">
+                Ir al Checkout <ChevronRight size={14} />
+              </EditorialButton>
             </Link>
           </div>
         )}

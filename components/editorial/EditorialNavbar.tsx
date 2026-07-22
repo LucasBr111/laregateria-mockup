@@ -6,9 +6,9 @@ import { useCartStore, useUIStore } from '@/lib/store';
 import { cn } from '@/lib/utils';
 
 const NAV_LINKS = [
-  { label: 'Catálogo',        href: '/catalog'             },
-  { label: 'Nuestra Historia', href: '/#heritage'           },
-  { label: 'Contactar',       href: '/#contact'            },
+  { label: 'Catálogo',         href: '/catalog' },
+  { label: 'Nuestra Historia', href: '/history' },
+  { label: 'Contactar',        href: '/contact' },
 ];
 
 export function EditorialNavbar() {

@@ -64,8 +64,13 @@ export function EditorialFooter() {
                 </Link>
               </li>
               <li>
-                <Link href="/#heritage" className="hover:text-[var(--text-primary)] transition-colors">
-                  Filosofía Atelier
+                <Link href="/history" className="hover:text-[var(--text-primary)] transition-colors">
+                  Nuestra Historia & Filosofía
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-[var(--text-primary)] transition-colors">
+                  Contacto Directo & Equipo
                 </Link>
               </li>
               <li>
