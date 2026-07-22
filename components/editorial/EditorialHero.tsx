@@ -10,7 +10,7 @@ export function EditorialHero() {
       {/* Background Image with Campaign Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/img/la-regaleria-hero2.png"
+          src="/img/la-regaleria-hero.png"
           alt="Campaña LA REGALERÍA"
           fill
           className="object-cover object-top opacity-80 transition-transform duration-1000"

@@ -193,46 +193,7 @@ export function ContactPage() {
         </div>
       </section>
 
-      {/* ── 4. TEAM SECTION (EXACT REFERENCE DESIGN) ── */}
-      <section className="py-16 lg:py-24 bg-[var(--bg-surface)] border-b border-[var(--border-subtle)]">
-        <div className="container-app space-y-12">
-          <div className="text-center space-y-2 max-w-xl mx-auto">
-            <p className="editorial-label">EL EQUIPO</p>
-            <h2 className="font-serif text-3xl md:text-4xl font-light">
-              El equipo detrás del movimiento
-            </h2>
-            <p className="text-xs text-[var(--text-secondary)]">
-              Contactá directamente con cada integrante de LA REGALERÍA para resolver cualquier consulta.
-            </p>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {TEAM.map((member, idx) => (
-              <ScrollReveal key={idx} delay={idx * 100}>
-                <div className="editorial-card p-6 space-y-4 text-center bg-[var(--bg-base)] flex flex-col items-center justify-between">
-                  <div className="w-14 h-14 bg-[var(--text-primary)] text-[var(--bg-base)] font-serif font-bold text-xl flex items-center justify-center">
-                    {member.initials}
-                  </div>
-                  <div>
-                    <h3 className="font-serif text-xl font-light">{member.name}</h3>
-                    <p className="editorial-label pt-1">{member.role}</p>
-                  </div>
-                  <a
-                    href={`https://wa.me/${member.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hola ${member.name}, me comunico con LA REGALERÍA.`)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full pt-2"
-                  >
-                    <button className="w-full py-2 px-3 text-[10px] uppercase font-semibold tracking-[0.18em] border border-[var(--border-medium)] rounded-full hover:bg-[var(--text-primary)] hover:text-[var(--bg-base)] transition-all">
-                      [ CONTACTAR VÍA WHATSAPP ]
-                    </button>
-                  </a>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ── 5. MAP BANNER (EXACT REFERENCE DESIGN) ── */}
       <section className="relative h-64 md:h-80 w-full overflow-hidden bg-[var(--bg-surface-elevated)] border-b border-[var(--border-subtle)]">
