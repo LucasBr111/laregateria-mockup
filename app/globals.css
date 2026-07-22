@@ -2,8 +2,8 @@
 @import "tailwindcss";
 
 /* ─────────────────────────────────────────────
-   LA REGATERÍA — Luxury Editorial Design System v2
-   Design Tokens Globales (Marfil / Carbón / Dorado Sutil)
+   LA REGALERÍA — Luxury Editorial Design System v2
+   Design Tokens Globales & Utilitarios Avanzados
 ───────────────────────────────────────────── */
 :root {
   /* LIGHT THEME (Marfil & Arena Editorial) */
@@ -24,14 +24,14 @@
   --accent-sale:         #B84A32;
   --accent-success:      #3B7A57;
 
-  --border-subtle:       rgba(24, 23, 21, 0.10);
-  --border-medium:       rgba(24, 23, 21, 0.22);
-  --border-strong:       rgba(24, 23, 21, 0.45);
+  --border-subtle:       rgba(24, 23, 21, 0.12);
+  --border-medium:       rgba(24, 23, 21, 0.28);
+  --border-strong:       rgba(24, 23, 21, 0.55);
 
   --font-serif:          'Cormorant Garamond', Georgia, serif;
   --font-sans:           'Inter', system-ui, -apple-system, sans-serif;
 
-  /* Formas rectangulares estrictas (Sin Pills / Sin bordes totalmente redondeados) */
+  /* Formas rectangulares estrictas (Sin Pills) */
   --radius-none:         0px;
   --radius-sm:           2px;
   --radius-md:           2px;
@@ -62,9 +62,9 @@
   --accent-gold-dark:    #B8952E;
   --accent-gold-muted:   rgba(212, 175, 55, 0.15);
 
-  --border-subtle:       rgba(244, 240, 234, 0.10);
-  --border-medium:       rgba(244, 240, 234, 0.22);
-  --border-strong:       rgba(244, 240, 234, 0.45);
+  --border-subtle:       rgba(244, 240, 234, 0.12);
+  --border-medium:       rgba(244, 240, 234, 0.28);
+  --border-strong:       rgba(244, 240, 234, 0.55);
 
   --shadow-subtle:       0 10px 40px -10px rgba(0, 0, 0, 0.4);
   --shadow-elevated:     0 20px 60px -15px rgba(0, 0, 0, 0.6);
@@ -119,6 +119,19 @@ body {
    Estilos Utilitarios Editoriales
 ───────────────────────────────────────────── */
 @layer components {
+  /* Cards con Bordes Cortados (Chamfered Cut Corners) */
+  .card-cut-corners {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-medium);
+    clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+    transition: all var(--transition-base);
+  }
+
+  .card-cut-corners:hover {
+    border-color: var(--accent-gold);
+    transform: translateY(-2px);
+  }
+
   /* Botón Rectangular Primario */
   .btn-editorial-primary {
     background: var(--text-primary);
@@ -273,18 +286,10 @@ body {
     border-color: var(--text-primary);
     background: var(--bg-base);
   }
-
-  /* Divisor Editorial Fino */
-  .divider-editorial {
-    height: 1px;
-    background: var(--border-subtle);
-    width: 100%;
-    margin: 2rem 0;
-  }
 }
 
 /* ─────────────────────────────────────────────
-   Marquee Animation
+   Marquee Animation (Continuous Horizontal Motion)
 ───────────────────────────────────────────── */
 @keyframes marquee {
   0% { transform: translateX(0%); }
@@ -294,11 +299,23 @@ body {
 .animate-marquee {
   display: flex;
   width: max-content;
-  animation: marquee 35s linear infinite;
+  animation: marquee 25s linear infinite;
 }
 
 .animate-marquee:hover {
   animation-play-state: paused;
+}
+
+/* ─────────────────────────────────────────────
+   Scroll Reveal Animations
+───────────────────────────────────────────── */
+@keyframes scrollFadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.scroll-reveal {
+  animation: scrollFadeUp 0.7s var(--ease-editorial) both;
 }
 
 /* Scrollbar sutil */
@@ -306,3 +323,12 @@ body {
 ::-webkit-scrollbar-track { background: var(--bg-base); }
 ::-webkit-scrollbar-thumb { background: var(--border-medium); }
 ::-webkit-scrollbar-thumb:hover { background: var(--text-primary); }
+
+/* Horizontal snap scroll */
+.scroll-snap-x {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.scroll-snap-x > * {
+  scroll-snap-align: start;
+}

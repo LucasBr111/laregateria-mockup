@@ -60,23 +60,39 @@ const TRUST_PILLARS: TrustPillar[] = [
 
 export function EditorialTrustSection() {
   return (
-    <section className="py-16 bg-[var(--bg-base)] border-b border-[var(--border-subtle)]">
-      <div className="container-app">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+    <section className="py-20 lg:py-28 bg-[var(--bg-base)] border-b border-[var(--border-subtle)]">
+      <div className="container-app space-y-10">
+
+        {/* Section Header */}
+        <div className="text-center max-w-2xl mx-auto space-y-2">
+          <p className="editorial-label">COMPROMISO & GARANTÍA</p>
+          <h2 className="font-serif text-3xl md:text-4xl font-light text-[var(--text-primary)]">
+            Sellos de Confianza LA REGALERÍA
+          </h2>
+        </div>
+
+        {/* Grid of Cut-Corner Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {TRUST_PILLARS.map((pillar, idx) => (
-            <div key={idx} className="space-y-3 text-left border-l border-[var(--border-subtle)] pl-4">
-              <div className="text-[var(--accent-gold)]">
+            <div
+              key={idx}
+              className="card-cut-corners p-6 flex flex-col justify-between space-y-4 text-center items-center"
+            >
+              <div className="p-3 bg-[var(--accent-gold-muted)] text-[var(--accent-gold)] inline-flex items-center justify-center">
                 {pillar.iconSvg}
               </div>
-              <h4 className="font-serif text-lg font-light text-[var(--text-primary)] leading-tight">
-                {pillar.title}
-              </h4>
-              <p className="text-xs text-[var(--text-secondary)] font-sans font-light leading-relaxed">
-                {pillar.subtitle}
-              </p>
+              <div className="space-y-1.5">
+                <h4 className="font-serif text-xl font-light text-[var(--text-primary)] leading-tight">
+                  {pillar.title}
+                </h4>
+                <p className="text-xs text-[var(--text-secondary)] font-sans font-light leading-relaxed">
+                  {pillar.subtitle}
+                </p>
+              </div>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );

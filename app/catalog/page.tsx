@@ -1,187 +1,172 @@
 'use client';
-import { useState, useMemo } from 'react';
+import Image from 'next/image';
+import { useState, useMemo, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { Suspense } from 'react';
-import { SlidersHorizontal, X } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { getProducts } from '@/lib/mock-data';
-import { ProductCard } from '@/components/shop/ProductCard';
+import { EditorialNavbar } from '@/components/editorial/EditorialNavbar';
+import { EditorialFooter } from '@/components/editorial/EditorialFooter';
+import { EditorialProductCard } from '@/components/editorial/EditorialProductCard';
 import type { ProductCategory } from '@/types';
-import { cn } from '@/lib/utils';
 
 const CATEGORIES: { value: ProductCategory | 'all'; label: string }[] = [
-  { value: 'all',      label: 'Todo'     },
-  { value: 'vestidos', label: 'Vestidos' },
-  { value: 'gym',      label: 'Gym'      },
-  { value: 'new',      label: 'New'      },
-  { value: 'clientes', label: 'Clientas' },
+  { value: 'all',      label: 'TODOS'     },
+  { value: 'vestidos', label: 'VESTIDOS'  },
+  { value: 'gym',      label: 'GYM & ACTIVEWEAR' },
+  { value: 'new',      label: 'NOVEDADES' },
+  { value: 'clientes', label: 'CÁPSULA'   },
 ];
 
 const SORT_OPTIONS = [
-  { value: 'featured', label: 'Destacados'    },
-  { value: 'price-asc', label: 'Precio ↑'    },
+  { value: 'newest',     label: 'Más nuevos' },
+  { value: 'price-asc',  label: 'Precio ↑'   },
   { value: 'price-desc', label: 'Precio ↓'   },
-  { value: 'rating', label: 'Mejor valorados' },
+  { value: 'rating',     label: 'Populares'  },
 ];
 
 function CatalogContent() {
   const searchParams = useSearchParams();
-  const initialCat = (searchParams.get('cat') ?? 'all') as ProductCategory | 'all';
+  const initialCat   = (searchParams.get('cat') ?? 'all') as ProductCategory | 'all';
 
-  const [activeCategory, setActiveCategory] = useState<ProductCategory | 'all'>(initialCat);
-  const [sort, setSort]                     = useState('featured');
-  const [showSale, setShowSale]             = useState(false);
-  const [showNew, setShowNew]               = useState(false);
-  const [filterOpen, setFilterOpen]         = useState(false);
+  const [activeCat, setActiveCat] = useState<ProductCategory | 'all'>(initialCat);
+  const [sort, setSort]           = useState('newest');
+  const [searchTerm, setSearchTerm] = useState('');
 
-  const all = getProducts();
+  const allProducts = getProducts();
 
   const filtered = useMemo(() => {
-    let list = activeCategory === 'all' ? all : all.filter((p) => p.category === activeCategory);
-    if (showSale) list = list.filter((p) => p.isSale);
-    if (showNew)  list = list.filter((p) => p.isNew);
+    let list = activeCat === 'all' ? allProducts : allProducts.filter((p) => p.category === activeCat);
+
+    if (searchTerm.trim()) {
+      const q = searchTerm.toLowerCase();
+      list = list.filter((p) => p.name.toLowerCase().includes(q) || p.tags.some((t) => t.toLowerCase().includes(q)));
+    }
 
     if (sort === 'price-asc')  list = [...list].sort((a, b) => a.price - b.price);
     if (sort === 'price-desc') list = [...list].sort((a, b) => b.price - a.price);
     if (sort === 'rating')     list = [...list].sort((a, b) => b.rating - a.rating);
-    if (sort === 'featured')   list = [...list].sort((a, b) => (b.isFeatured ? 1 : 0) - (a.isFeatured ? 1 : 0));
 
     return list;
-  }, [activeCategory, sort, showSale, showNew, all]);
+  }, [activeCat, sort, searchTerm, allProducts]);
 
   return (
-    <div className="min-h-dvh pt-20 pb-nav md:pb-12">
-      <div className="container-app">
-        {/* Page header */}
-        <div className="py-8 text-center">
-          <p className="text-xs tracking-widest uppercase text-[var(--primary)] mb-2">Explorar</p>
-          <h1 className="text-display-lg text-[var(--text-cream)]">Colección</h1>
-          <p className="text-sm text-[var(--text-muted)] mt-1">{filtered.length} productos</p>
+    <div className="min-h-dvh bg-[var(--bg-base)] text-[var(--text-primary)]">
+      <EditorialNavbar />
+
+      {/* ── 1. HERO HEADER CATALOG (REFERENCE DESIGN) ── */}
+      <section className="relative min-h-[380px] lg:min-h-[460px] flex items-center justify-center text-center overflow-hidden border-b border-[var(--border-subtle)]">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1600&q=85"
+            alt="Catálogo LA REGALERÍA"
+            fill
+            className="object-cover opacity-40"
+            priority
+            unoptimized
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-base)] via-black/50 to-black/70" />
         </div>
 
-        {/* Category tabs */}
-        <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-2 mb-5">
-          {CATEGORIES.map((cat) => (
-            <button
-              key={cat.value}
-              onClick={() => setActiveCategory(cat.value)}
-              className={cn(
-                'shrink-0 px-4 py-2 rounded-full text-sm font-medium tracking-wide transition-all duration-200',
-                activeCategory === cat.value
-                  ? 'text-black'
-                  : 'border border-[var(--glass-border)] text-[var(--text-muted)] hover:border-[var(--primary)] hover:text-[var(--primary)]'
-              )}
-              style={activeCategory === cat.value
-                ? { background: 'var(--primary)' }
-                : { background: 'var(--glass-bg)' }
-              }
-            >
-              {cat.label}
-            </button>
-          ))}
+        <div className="container-app relative z-10 space-y-4 py-16">
+          <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--accent-gold)] font-semibold">
+            TEMPORADA 2026
+          </p>
+          <h1 className="text-display-giant text-white font-serif font-light tracking-widest uppercase">
+            CATÁLOGO
+          </h1>
+          <p className="text-sm text-neutral-300 font-sans font-light max-w-md mx-auto">
+            Explorá la colección completa de alta costura y activewear.
+          </p>
         </div>
+      </section>
 
-        {/* Filters row */}
-        <div className="flex items-center gap-3 mb-6 flex-wrap">
-          {/* Sort */}
-          <select
-            value={sort}
-            onChange={(e) => setSort(e.target.value)}
-            className="input-glass max-w-[160px] cursor-pointer"
-            style={{ background: 'var(--glass-bg)' }}
-          >
-            {SORT_OPTIONS.map((o) => (
-              <option key={o.value} value={o.value} style={{ background: 'var(--bg-surface)' }}>
-                {o.label}
-              </option>
-            ))}
-          </select>
+      {/* ── 2. CONTROL BAR (PRODUCT COUNT, SEARCH & DROPDOWNS) ── */}
+      <section className="bg-[var(--bg-surface)] border-b border-[var(--border-subtle)] py-4">
+        <div className="container-app flex flex-col md:flex-row md:items-center justify-between gap-4">
+          {/* Left: Title & Count */}
+          <div>
+            <h2 className="font-serif text-2xl font-light tracking-wider text-[var(--text-primary)]">
+              PRODUCTOS
+            </h2>
+            <p className="text-xs text-[var(--text-muted)] font-mono">
+              {filtered.length} artículo{filtered.length !== 1 ? 's' : ''}
+            </p>
+          </div>
 
-          {/* Toggle filters */}
-          <button
-            onClick={() => setFilterOpen((f) => !f)}
-            className={cn(
-              'flex items-center gap-2 px-3 py-2 rounded-xl text-sm border transition-all',
-              filterOpen
-                ? 'text-[var(--primary)] border-[var(--primary)]'
-                : 'text-[var(--text-muted)] border-[var(--glass-border)] hover:border-[var(--primary)]'
-            )}
-            style={{ background: 'var(--glass-bg)' }}
-          >
-            <SlidersHorizontal size={14} /> Filtros
-          </button>
-
-          {/* Active filter chips */}
-          {showSale && (
-            <button
-              onClick={() => setShowSale(false)}
-              className="flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium"
-              style={{ background: 'var(--accent-sale)', color: 'white' }}
-            >
-              Ofertas <X size={11} />
-            </button>
-          )}
-          {showNew && (
-            <button
-              onClick={() => setShowNew(false)}
-              className="flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium badge-new"
-            >
-              Nuevos <X size={11} />
-            </button>
-          )}
-        </div>
-
-        {/* Extended filter panel */}
-        {filterOpen && (
-          <div className="glass-card p-4 mb-6 flex flex-wrap gap-3 animate-fade-in-up">
-            <label className="flex items-center gap-2 cursor-pointer">
+          {/* Right: Search, Category & Sort Controls */}
+          <div className="flex flex-wrap items-center gap-3">
+            {/* Search Input */}
+            <div className="relative flex-1 sm:w-64">
+              <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--text-muted)]" />
               <input
-                type="checkbox"
-                checked={showSale}
-                onChange={(e) => setShowSale(e.target.checked)}
-                className="accent-[var(--primary)] w-4 h-4"
+                type="text"
+                placeholder="Buscar productos..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="input-editorial pl-9 py-2 text-xs"
               />
-              <span className="text-sm text-[var(--text-cream)]">Solo ofertas</span>
-            </label>
-            <label className="flex items-center gap-2 cursor-pointer">
-              <input
-                type="checkbox"
-                checked={showNew}
-                onChange={(e) => setShowNew(e.target.checked)}
-                className="accent-[var(--primary)] w-4 h-4"
-              />
-              <span className="text-sm text-[var(--text-cream)]">Solo novedades</span>
-            </label>
-          </div>
-        )}
+            </div>
 
-        {/* Product grid */}
-        {filtered.length === 0 ? (
-          <div className="py-20 text-center">
-            <p className="text-[var(--text-muted)] text-lg font-display">No hay productos con estos filtros.</p>
-            <button
-              onClick={() => { setActiveCategory('all'); setShowSale(false); setShowNew(false); }}
-              className="mt-4 text-sm text-[var(--primary)] hover:underline"
+            {/* Category Dropdown */}
+            <select
+              value={activeCat}
+              onChange={(e) => setActiveCat(e.target.value as ProductCategory | 'all')}
+              className="input-editorial py-2 text-xs w-36 cursor-pointer"
             >
-              Limpiar filtros
-            </button>
+              {CATEGORIES.map((c) => (
+                <option key={c.value} value={c.value} className="bg-[var(--bg-surface)] text-[var(--text-primary)]">
+                  {c.label}
+                </option>
+              ))}
+            </select>
+
+            {/* Sort Dropdown */}
+            <select
+              value={sort}
+              onChange={(e) => setSort(e.target.value)}
+              className="input-editorial py-2 text-xs w-36 cursor-pointer"
+            >
+              {SORT_OPTIONS.map((s) => (
+                <option key={s.value} value={s.value} className="bg-[var(--bg-surface)] text-[var(--text-primary)]">
+                  {s.label}
+                </option>
+              ))}
+            </select>
           </div>
-        ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-            {filtered.map((p) => (
-              <ProductCard key={p.id} product={p} />
-            ))}
-          </div>
-        )}
-      </div>
+        </div>
+      </section>
+
+      {/* ── 3. PRODUCT GRID ── */}
+      <section className="py-12 lg:py-20">
+        <div className="container-app">
+          {filtered.length === 0 ? (
+            <div className="py-24 text-center space-y-4">
+              <p className="font-serif text-2xl text-[var(--text-muted)]">No se encontraron artículos.</p>
+              <button
+                onClick={() => { setActiveCat('all'); setSearchTerm(''); }}
+                className="btn-editorial-link"
+              >
+                Limpiar Filtros
+              </button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+              {filtered.map((product) => (
+                <EditorialProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      <EditorialFooter />
     </div>
   );
 }
 
 export default function CatalogPage() {
   return (
-    <Suspense fallback={<div className="min-h-dvh pt-20 flex items-center justify-center">
-      <div className="skeleton w-32 h-8" />
-    </div>}>
+    <Suspense fallback={<div className="min-h-dvh bg-[var(--bg-base)]" />}>
       <CatalogContent />
     </Suspense>
   );

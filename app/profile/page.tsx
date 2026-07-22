@@ -11,6 +11,9 @@ import { GlassButton } from '@/components/ui/GlassButton';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 
+import { EditorialNavbar } from '@/components/editorial/EditorialNavbar';
+import { EditorialFooter } from '@/components/editorial/EditorialFooter';
+
 const RANK_ICONS: Record<string, string> = {
   bronce: '🥉',
   plata:  '🥈',
@@ -35,8 +38,9 @@ export default function ProfilePage() {
   const progress   = rankProgressPercent(customer.loyalty.points, customer.loyalty.rank);
 
   return (
-    <div className="min-h-dvh pt-20 pb-nav md:pb-12">
-      <div className="container-app max-w-2xl py-8 space-y-6">
+    <div className="min-h-dvh bg-[var(--bg-base)] text-[var(--text-primary)] flex flex-col justify-between">
+      <EditorialNavbar />
+      <div className="container-app max-w-2xl py-12 space-y-6 flex-1">
 
         {/* ── Header de perfil ── */}
         <div className="glass-card p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5">
@@ -233,6 +237,7 @@ export default function ProfilePage() {
           ))}
         </div>
       </div>
+      <EditorialFooter />
     </div>
   );
 }

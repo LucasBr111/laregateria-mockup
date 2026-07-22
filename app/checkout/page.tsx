@@ -7,6 +7,8 @@ import { useCartStore } from '@/lib/store';
 import { formatPrice, buildWhatsAppMessage } from '@/lib/utils';
 import { GlassButton } from '@/components/ui/GlassButton';
 import { BANK_INFO, WHATSAPP_NUMBER } from '@/lib/mock-data';
+import { EditorialNavbar } from '@/components/editorial/EditorialNavbar';
+import { EditorialFooter } from '@/components/editorial/EditorialFooter';
 import type { ShippingZone, PaymentMethod } from '@/types';
 import { SHIPPING_LABELS, SHIPPING_COSTS } from '@/types';
 import { cn } from '@/lib/utils';
@@ -121,10 +123,11 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="min-h-dvh pt-20 pb-nav md:pb-12">
-      <div className="container-app max-w-2xl py-8">
+    <div className="min-h-dvh bg-[var(--bg-base)] text-[var(--text-primary)] flex flex-col justify-between">
+      <EditorialNavbar />
+      <div className="container-app max-w-2xl py-12 flex-1">
         <div className="text-center mb-6">
-          <h1 className="text-display-md text-[var(--text-cream)]">Checkout</h1>
+          <h1 className="text-display-md text-[var(--text-primary)] font-serif">Checkout</h1>
         </div>
 
         <StepIndicator current={step} steps={steps} />
@@ -358,6 +361,7 @@ export default function CheckoutPage() {
           </div>
         )}
       </div>
+      <EditorialFooter />
     </div>
   );
 }

@@ -15,35 +15,35 @@ interface BentoItem {
 const BENTO_CATEGORIES: BentoItem[] = [
   {
     id: 'vestidos',
-    title: 'Vestidos de Noche & Gala',
-    subtitle: 'Satén fluido, cortes midi y siluetas de alta elegancia.',
+    title: 'Vestidos de Noche',
+    subtitle: 'Satén fluido & alta elegancia.',
     href: '/catalog?cat=vestidos',
     image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800&q=85',
-    gridClass: 'col-span-1 md:col-span-2 row-span-2 min-h-[420px] md:min-h-[560px]',
+    gridClass: 'col-span-2 md:col-span-2 row-span-2 min-h-[360px] md:min-h-[520px]',
   },
   {
     id: 'gym',
-    title: 'Gym & Activewear',
-    subtitle: 'Línea Sculpt de alta compresión.',
+    title: 'Gym Sculpt',
+    subtitle: 'Alta compresión.',
     href: '/catalog?cat=gym',
     image: 'https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=700&q=85',
-    gridClass: 'col-span-1 row-span-1 min-h-[260px] md:min-h-[270px]',
+    gridClass: 'col-span-1 row-span-1 min-h-[220px] md:min-h-[250px]',
   },
   {
     id: 'new',
-    title: 'Lanzamientos Recientes',
-    subtitle: 'Novedades de la semana.',
+    title: 'Novedades',
+    subtitle: 'Lanzamientos.',
     href: '/catalog?cat=new',
     image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=700&q=85',
-    gridClass: 'col-span-1 row-span-1 min-h-[260px] md:min-h-[270px]',
+    gridClass: 'col-span-1 row-span-1 min-h-[220px] md:min-h-[250px]',
   },
   {
     id: 'clientes',
     title: 'Colección Cápsula',
-    subtitle: 'Looks curados por estilistas.',
+    subtitle: 'Looks curados.',
     href: '/catalog?cat=clientes',
     image: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=800&q=85',
-    gridClass: 'col-span-1 md:col-span-2 row-span-1 min-h-[240px] md:min-h-[270px]',
+    gridClass: 'col-span-2 md:col-span-2 row-span-1 min-h-[220px] md:min-h-[250px]',
   },
 ];
 
@@ -52,21 +52,19 @@ export function EditorialBentoCategories() {
     <section className="py-20 lg:py-32 bg-[var(--bg-base)]">
       <div className="container-app space-y-10">
 
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-          <div className="space-y-2">
-            <p className="editorial-label">EXPLORAR UNIVERSOS</p>
-            <h2 className="font-serif text-3xl md:text-5xl font-light text-[var(--text-primary)]">
-              Colecciones Curadas
-            </h2>
-          </div>
-          <p className="text-xs text-[var(--text-secondary)] font-sans max-w-xs uppercase tracking-wider">
-            Cada línea responde a una intención estética particular.
+        {/* Centered Header */}
+        <div className="text-center max-w-2xl mx-auto space-y-3">
+          <p className="editorial-label">EXPLORAR UNIVERSOS</p>
+          <h2 className="font-serif text-3xl md:text-5xl font-light text-[var(--text-primary)]">
+            Colecciones Curadas
+          </h2>
+          <p className="text-xs md:text-sm text-[var(--text-secondary)] font-sans font-light max-w-md mx-auto">
+            Cada universo responde a una intención estética y textil particular.
           </p>
         </div>
 
-        {/* Bento Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        {/* Bento Grid Layout (Mobile-first 2 cols to 4 cols) */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
           {BENTO_CATEGORIES.map((cat) => (
             <Link
               key={cat.id}
@@ -86,18 +84,18 @@ export function EditorialBentoCategories() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent group-hover:from-black/90 transition-colors duration-300" />
 
               {/* Card Content */}
-              <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-between z-10">
+              <div className="absolute inset-0 p-4 md:p-8 flex flex-col justify-between z-10">
                 <div className="flex justify-end">
-                  <span className="w-8 h-8 rounded-none border border-white/20 bg-black/30 text-white flex items-center justify-center group-hover:bg-[var(--accent-gold)] group-hover:text-black group-hover:border-[var(--accent-gold)] transition-all">
-                    <ArrowUpRight size={16} />
+                  <span className="w-7 h-7 md:w-8 md:h-8 rounded-none border border-white/20 bg-black/40 text-white flex items-center justify-center group-hover:bg-[var(--accent-gold)] group-hover:text-black group-hover:border-[var(--accent-gold)] transition-all">
+                    <ArrowUpRight size={15} />
                   </span>
                 </div>
 
-                <div className="space-y-1.5">
-                  <h3 className="font-serif text-2xl md:text-3xl text-white font-light">
+                <div className="space-y-1">
+                  <h3 className="font-serif text-xl sm:text-2xl md:text-3xl text-white font-light">
                     {cat.title}
                   </h3>
-                  <p className="text-xs text-neutral-300 font-sans font-light max-w-sm">
+                  <p className="text-[11px] md:text-xs text-neutral-300 font-sans font-light max-w-sm">
                     {cat.subtitle}
                   </p>
                 </div>
