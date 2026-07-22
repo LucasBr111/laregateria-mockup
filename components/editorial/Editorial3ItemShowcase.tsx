@@ -11,11 +11,11 @@ export function Editorial3ItemShowcase() {
 
   return (
     <section className="py-16 md:py-24 bg-[var(--bg-base)] border-b border-[var(--border-subtle)]">
-      <div className="container-app space-y-10">
+      <div className="container-app max-w-6xl mx-auto space-y-10">
 
-        {/* Header matching exact reference design */}
+        {/* Centered Header Layout */}
         <ScrollReveal>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[var(--border-subtle)] pb-6">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[var(--border-subtle)] pb-6">
             <EditorialHeading
               label="EDICIONES DE LEGADO"
               title="CÁPSULA RETRO"
@@ -28,7 +28,7 @@ export function Editorial3ItemShowcase() {
         </ScrollReveal>
 
         {/* 3-Item Side-by-Side Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {products.map((product, idx) => (
             <ScrollReveal key={product.id} delay={idx * 120}>
               <EditorialProductCard product={product} />

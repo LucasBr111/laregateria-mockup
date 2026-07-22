@@ -22,7 +22,7 @@ export default function HomePage() {
       <EditorialHero />
 
       {/* Block 3: Animated Marquee Promo Bar (Below Hero) */}
-      <EditorialMarqueePromo />
+ {/*      <EditorialMarqueePromo /> */}
 
       {/* Block 4: Highlighted Quote / Manifesto */}
       <EditorialQuote />

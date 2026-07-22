@@ -38,10 +38,10 @@ export function EditorialProductCard({ product, className }: EditorialProductCar
 
   return (
     <Link href={`/product/${product.id}`} className={cn('block group', className)}>
-      <article className="editorial-card overflow-hidden h-full flex flex-col bg-[#161616] border border-[#262626] group-hover:border-[var(--accent-gold)] transition-all duration-300">
+      <article className="editorial-card overflow-hidden h-full flex flex-col bg-[var(--bg-surface)] border border-[var(--border-subtle)] group-hover:border-[var(--accent-gold)] transition-all duration-300">
         
         {/* Image Container with Badges */}
-        <div className="relative aspect-[3/4] w-full bg-[#1A1A1A] overflow-hidden">
+        <div className="relative aspect-[3/4] w-full bg-[var(--bg-surface-elevated)] overflow-hidden">
           <Image
             src={product.images[0]}
             alt={product.name}
@@ -51,7 +51,7 @@ export function EditorialProductCard({ product, className }: EditorialProductCar
             unoptimized
           />
 
-          {/* Top Right Gold Rectangular Badge (Exact reference design) */}
+          {/* Top Right Gold Rectangular Badge */}
           <div className="absolute top-3 right-3 z-10">
             <EditorialBadge variant="gold">
               {statusLabel}
@@ -61,46 +61,46 @@ export function EditorialProductCard({ product, className }: EditorialProductCar
           {/* Wishlist Button Top Left */}
           <button
             onClick={(e) => { e.preventDefault(); e.stopPropagation(); setLiked(!liked); }}
-            className="absolute top-3 left-3 w-8 h-8 flex items-center justify-center bg-black/60 border border-white/20 text-white hover:border-[var(--accent-gold)] transition-all z-10"
+            className="absolute top-3 left-3 w-8 h-8 flex items-center justify-center bg-[var(--bg-base)]/70 border border-[var(--border-subtle)] text-[var(--text-primary)] hover:border-[var(--accent-gold)] transition-all z-10"
             aria-label="Wishlist"
           >
             <Heart size={14} className={cn(liked && 'fill-[var(--accent-gold)] text-[var(--accent-gold)]')} />
           </button>
         </div>
 
-        {/* Info Box (Reference Design Layout) */}
-        <div className="p-4 flex flex-col justify-between flex-1 space-y-3 text-left bg-[#161616] text-white">
+        {/* Info Box (Matching Theme Tokens 100%) */}
+        <div className="p-4 flex flex-col justify-between flex-1 space-y-3 text-left bg-[var(--bg-surface)] text-[var(--text-primary)]">
           <div className="space-y-1">
             <div className="flex justify-between items-center text-[9px] tracking-[0.2em] uppercase text-[var(--accent-gold)] font-bold">
               <span>{statusLabel}</span>
               <span className="opacity-70">{statusLabel}</span>
             </div>
-            <h3 className="font-serif text-lg font-light text-white group-hover:text-[var(--accent-gold)] transition-colors line-clamp-1">
+            <h3 className="font-serif text-lg font-light text-[var(--text-primary)] group-hover:text-[var(--accent-gold)] transition-colors line-clamp-1">
               {product.name}
             </h3>
-            <p className="font-sans font-semibold text-sm text-white pt-0.5">
+            <p className="font-sans font-semibold text-sm text-[var(--text-primary)] pt-0.5">
               {formatPrice(product.price)}
             </p>
           </div>
 
           {/* Sizes Row */}
-          <div className="flex items-center gap-1.5 text-[9px] uppercase tracking-wider text-neutral-400 pt-1">
-            <span className="font-bold text-neutral-500">TALLES:</span>
+          <div className="flex items-center gap-1.5 text-[9px] uppercase tracking-wider text-[var(--text-secondary)] pt-1">
+            <span className="font-bold text-[var(--text-muted)]">TALLES:</span>
             <div className="flex gap-1 flex-wrap">
               {availableSizes.map((s) => (
-                <span key={s} className="px-1.5 py-0.5 rounded-full bg-neutral-800 text-neutral-300 font-mono">
+                <span key={s} className="px-1.5 py-0.5 rounded-full bg-[var(--bg-surface-elevated)] text-[var(--text-primary)] border border-[var(--border-subtle)] font-mono">
                   {s}
                 </span>
               ))}
             </div>
           </div>
 
-          {/* Bottom Oval Action Button (Exact reference design) */}
+          {/* Bottom Oval Action Button (Theme-aware) */}
           <div className="pt-2">
             <button
               onClick={handleQuickAdd}
               disabled={!firstAvailableVariant || adding}
-              className="w-full py-2.5 px-4 text-[10px] font-bold tracking-[0.2em] uppercase rounded-full border border-neutral-700 bg-neutral-900/80 text-white hover:bg-[var(--accent-gold)] hover:text-black hover:border-[var(--accent-gold)] transition-all duration-300"
+              className="w-full py-2.5 px-4 text-[10px] font-bold tracking-[0.2em] uppercase rounded-full border border-[var(--border-medium)] bg-[var(--bg-surface-elevated)] text-[var(--text-primary)] hover:bg-[var(--accent-gold)] hover:text-black hover:border-[var(--accent-gold)] transition-all duration-300"
             >
               {adding ? 'AGREGADO' : firstAvailableVariant ? 'ADQUIRIR PIEZA' : 'RESTOCK PRONTO'}
             </button>

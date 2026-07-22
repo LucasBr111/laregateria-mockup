@@ -18,7 +18,7 @@ const BENTO_CATEGORIES: BentoItem[] = [
     title: 'Vestidos de Noche',
     subtitle: 'Satén fluido & alta elegancia.',
     href: '/catalog?cat=vestidos',
-    image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800&q=85',
+    image: 'img/dress.png',
     gridClass: 'col-span-2 md:col-span-2 row-span-2 min-h-[360px] md:min-h-[520px]',
   },
   {
@@ -26,7 +26,7 @@ const BENTO_CATEGORIES: BentoItem[] = [
     title: 'Gym Sculpt',
     subtitle: 'Alta compresión.',
     href: '/catalog?cat=gym',
-    image: 'https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=700&q=85',
+    image: 'img/gym.png',
     gridClass: 'col-span-1 row-span-1 min-h-[220px] md:min-h-[250px]',
   },
   {
@@ -34,7 +34,7 @@ const BENTO_CATEGORIES: BentoItem[] = [
     title: 'Novedades',
     subtitle: 'Lanzamientos.',
     href: '/catalog?cat=new',
-    image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=700&q=85',
+    image: '/img/new.png',
     gridClass: 'col-span-1 row-span-1 min-h-[220px] md:min-h-[250px]',
   },
   {
@@ -42,7 +42,7 @@ const BENTO_CATEGORIES: BentoItem[] = [
     title: 'Colección Cápsula',
     subtitle: 'Looks curados.',
     href: '/catalog?cat=clientes',
-    image: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=800&q=85',
+    image: '/img/collection.png',
     gridClass: 'col-span-2 md:col-span-2 row-span-1 min-h-[220px] md:min-h-[250px]',
   },
 ];
