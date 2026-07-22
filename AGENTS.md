@@ -1,5 +1,15 @@
 <!-- BEGIN:nextjs-agent-rules -->
-# This is NOT the Next.js you know
+# AGENT RULES
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
+Antes de modificar cualquier parte del proyecto debes leer y respetar la documentación ubicada en:
+
+- docs/ui-design-system.md
+- docs/architecture.md
+- docs/business-rules.md
+
+Estas reglas tienen prioridad sobre cualquier decisión estética o técnica.
+
+Nunca generes componentes que contradigan el Design System.
+
+Todo el frontend debe respetar el sistema editorial definido en ui-design-system.md.
 <!-- END:nextjs-agent-rules -->
