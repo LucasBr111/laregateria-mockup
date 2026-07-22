@@ -4,47 +4,52 @@ import { EditorialHero } from '@/components/editorial/EditorialHero';
 import { EditorialMarqueePromo } from '@/components/editorial/EditorialMarqueePromo';
 import { EditorialQuote } from '@/components/editorial/EditorialQuote';
 import { EditorialBentoCategories } from '@/components/editorial/EditorialBentoCategories';
-import { EditorialCarousel } from '@/components/editorial/EditorialCarousel';
+import { Editorial3ItemShowcase } from '@/components/editorial/Editorial3ItemShowcase';
 import { EditorialBrandHeritage } from '@/components/editorial/EditorialBrandHeritage';
 import { EditorialTrustSection } from '@/components/editorial/EditorialTrustSection';
 import { EditorialFeaturedCTA } from '@/components/editorial/EditorialFeaturedCTA';
 import { EditorialNewsletter } from '@/components/editorial/EditorialNewsletter';
 import { EditorialFooter } from '@/components/editorial/EditorialFooter';
+import { ScrollReveal } from '@/components/ui/ScrollReveal';
 
 export default function HomePage() {
   return (
     <div className="min-h-dvh bg-[var(--bg-base)] text-[var(--text-primary)] transition-colors duration-300">
-      {/* Navbar & Header */}
+      {/* Block 1: Navbar & Header */}
       <EditorialNavbar />
 
-      {/* Hero Editorial */}
+      {/* Block 2: Hero Editorial */}
       <EditorialHero />
 
-      {/* Animated Marquee Promo Bar (Moved below Hero) */}
+      {/* Block 3: Animated Marquee Promo Bar (Below Hero) */}
       <EditorialMarqueePromo />
 
-      {/* Highlighted Quote / Manifesto */}
+      {/* Block 4: Highlighted Quote / Manifesto */}
       <EditorialQuote />
 
-      {/* Bento Grid Categories (Mobile-friendly) */}
+      {/* Block 5: Bento Grid Categories (Mobile Responsive 2x2) */}
       <EditorialBentoCategories />
 
-      {/* Best Products Carousel */}
-      <EditorialCarousel />
+      {/* Block 6: 3-Item Featured Showcase (Reference Layout) */}
+      <Editorial3ItemShowcase />
 
-      {/* Brand Heritage & Story */}
+      {/* Block 7: Brand Heritage & Story */}
       <EditorialBrandHeritage />
 
-      {/* Trust Pillars in Cut-Corner Cards */}
+      {/* Block 8: Trust Pillars in Cut-Corner Cards (3 top, 2 bottom in Mobile) */}
       <EditorialTrustSection />
 
-      {/* Featured Collection CTA */}
-      <EditorialFeaturedCTA />
+      {/* Block 9: Featured Collection CTA */}
+      <ScrollReveal>
+        <EditorialFeaturedCTA />
+      </ScrollReveal>
 
-      {/* Newsletter */}
-      <EditorialNewsletter />
+      {/* Block 10: Newsletter */}
+      <ScrollReveal>
+        <EditorialNewsletter />
+      </ScrollReveal>
 
-      {/* Footer Editorial */}
+      {/* Block 11: Footer Editorial */}
       <EditorialFooter />
     </div>
   );
